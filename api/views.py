@@ -9,10 +9,14 @@ class MeetingList(generics.ListAPIView):
     def get_queryset(self):
 
         queryset = Meeting.objects.all()
-        country = self.request.query_params.get('country', None)
-        city = self.request.query_params.get('city', None)
-        if country is not None:
+        """country = self.request.query_params.get('country', None)
+        city = self.request.query_params.get('city', None)"""
+        adress = self.request.query_params.get('adress', None)
+        """if country is not None:
             queryset = queryset.filter(country=country)
         if city is not None:
-            queryset = queryset.filter(city=city)
+            queryset = queryset.filter(city=city)"""
+        if adress is not None:
+            queryset = queryset.filter(adress__contains=adress)
         return queryset
+    

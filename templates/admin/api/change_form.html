@@ -1,0 +1,10 @@
+{% extends 'admin/change_form.html' %}
+{% block noscript %}
+<div id='js-warn'>
+<p>Please activate JavaScript in order to make formatting work correctly!</p>
+<a href="https://www.enable-javascript.com/">Here's how!</a>
+</div>
+<script>
+    document.getElementById('js_warn').style.display = none;
+</script>
+{% endblock %}
