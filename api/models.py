@@ -1,26 +1,31 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Meeting(models.Model):
-    name = models.CharField(max_length=96, unique=True, blank=True)
-    
-    country = models.CharField(max_length=96)
-    city = models.CharField(max_length=96)
-    street = models.CharField(max_length=96)
+    owner = models.ForeignKey(User, null=True, blank=True, editable=False)
 
-    start_time = models.TimeField(max_length=96, blank=True)
-    end_time = models.TimeField(max_length=96, blank=True)
-
-    #DAYS
-    monday = models.BooleanField(default=False)
-    tuesday = models.BooleanField(default=False)
-    wednesday = models.BooleanField(default=False)
-    thursday = models.BooleanField(default=False)
-    friday = models.BooleanField(default=False)
-    saturday = models.BooleanField(default=False)
-    sunday = models.BooleanField(default=False)
+    name = models.CharField(max_length=96, unique=True, default='')
+    description = models.CharField(max_length=196, default='')
+    adress = models.CharField(max_length=96, help_text='Street, City, Country (Please activate javascript for autofill)')
 
     def __str__(self):
         return self.name
 
+class When(models.Model):
+    DAYS = (
+        ("Monday", "Monday"),
+        ("Tuesday", "Tuesday"),
+        ("Wednesday", "Wednesday"),
+        ("Thursday", "Thusday"),
+        ("Friday", "Friday"),
+        ("Saturday", "Saturday"),
+        ("Sunday", "Sunday"),
+    )
+    day = models.CharField(max_length=10, choices=DAYS, default='Monday')
+    time = models.TimeField(default='19:00:00')
+    duration = models.CharField(help_text='In minutes', max_length=3, default=60)
+    
+    meeting = models.OneToOneField(Meeting, on_delete=models.CASCADE, null=True)
 
-# Create your models here.
+    #class Meta:
+     #   unique_together = ('meeting')

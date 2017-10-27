@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y3u=#x7#jor=-9$+dxcz1tao&3a!(a_-i160&cpd7yebcd^-y6'
+SECRET_KEY = 'MIND_YOUR_BIZZZ'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -34,6 +34,15 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT = "/var/www/example.com/static/"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    #'/var/www/static/',
+]
 
 # Application definition
 
@@ -58,12 +67,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'CAapi.urls'
+ROOT_URLCONF = 'MeetingAPI.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR + '/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,7 +85,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'CAapi.wsgi.application'
+WSGI_APPLICATION = 'MeetingAPI.wsgi.application'
 
 
 # Database
