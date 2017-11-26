@@ -9,14 +9,21 @@ class MeetingList(generics.ListAPIView):
     def get_queryset(self):
 
         queryset = Meeting.objects.all()
-        """country = self.request.query_params.get('country', None)
-        city = self.request.query_params.get('city', None)"""
         adress = self.request.query_params.get('adress', None)
-        """if country is not None:
-            queryset = queryset.filter(country=country)
-        if city is not None:
-            queryset = queryset.filter(city=city)"""
+        id = self.request.query_params.get('id', None)
+
         if adress is not None:
             queryset = queryset.filter(adress__contains=adress)
+        if id is not None:
+            queryset = queryset.filter(pk=id)
         return queryset
-    
+class MeetingListById(generics.ListAPIView):
+    serializer_class = MeetingSerializer
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        pk = self.kwargs['pk']
+        return Meeting.objects.filter(pk=pk)
