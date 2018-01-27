@@ -24,6 +24,7 @@ class AjaxedAdmin(admin.ModelAdmin):
     #Seeting upp JS for adress field
     class Media:
         js = (
+            'js/region-handle.js',
             'js/geo-fetch.js',
         )
 

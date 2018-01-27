@@ -7,6 +7,8 @@ class Meeting(models.Model):
     name = models.CharField(max_length=96, unique=True, default='')
     description = models.CharField(max_length=196, default='')
     adress = models.CharField(max_length=96, help_text='Street, City, Country (Please activate javascript for autofill)')
+    region = models.CharField(max_length=40, choices=(('','--------------------'),), default="select")
+    area = models.CharField(max_length=40, choices=(('','--------------------'),), default="select")
 
     def __str__(self):
         return self.name
