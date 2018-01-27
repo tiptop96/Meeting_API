@@ -1,7 +1,7 @@
 from django.contrib import admin
 from api.models import Meeting, When
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 class WhenInline(admin.StackedInline):
     model = When

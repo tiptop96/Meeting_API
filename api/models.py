@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Meeting(models.Model):
-    owner = models.ForeignKey(User, null=True, blank=True, editable=False)
+    owner = models.ForeignKey(User, null=True, blank=True, editable=False, on_delete=models.CASCADE)
 
     name = models.CharField(max_length=96, unique=True, default='')
     description = models.CharField(max_length=196, default='')
