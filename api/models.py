@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from api.region_area_list import ALL_AREAS, ALL_REGIONS
 
 class Meeting(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, editable=False, on_delete=models.CASCADE)
@@ -7,8 +8,8 @@ class Meeting(models.Model):
     name = models.CharField(max_length=96, unique=True, default='')
     description = models.CharField(max_length=196, default='')
     adress = models.CharField(max_length=96, help_text='Street, City, Country (Please activate javascript for autofill)')
-    region = models.CharField(max_length=40, choices=(('','--------------------'),), default="select")
-    area = models.CharField(max_length=40, choices=(('','--------------------'),), default="select")
+    region = models.CharField(max_length=40, choices=ALL_REGIONS, default='N/A') #choices=(('','--------------------'),), default="select"
+    area = models.CharField(max_length=40, choices=ALL_AREAS, default='N/A')
 
     def __str__(self):
         return self.name

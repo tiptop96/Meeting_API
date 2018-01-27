@@ -5,13 +5,14 @@ function loadRegions() {
         "Pacific South" : ["Antilope Valley","Hawaii","Nevada","Online","Central California","Inland Empire","Los Angeles","Orange County","San Diego","San Fernando Valley","San Gabriel/Pomona Valley","Southern Nevada","West Inland"],
         "Atlantic North" : ["Canadian Maritimes","Connecticut","Massachusetts","New York","Northern New England","Eastern Pennsylvania/New Jersey/Delaware","Quebec","Rhode Island","Southern Ontario","Washington, D.C."],
         "Atlantic South" : ["Alabama","Arkansas","Florida","Georgia","North Carolina","Louisiana","Tennessee","South Carolina","Virginia","Peru"],
-        "Midwest" : ["llinois","Indiana","Kentucky","Manitoba","Michigan","Minnesota","Missouri","Nebraska","Ohio","Wisconsin"],
-        "Southwest" : ["Arizona","Colorado","Kansas","New Mexico","Oklahoma","North Texas","Texas","South Central Texas","Southern Colorado","Valley Area of Texas"],
+        "Mid West" : ["llinois","Indiana","Kentucky","Manitoba","Michigan","Minnesota","Missouri","Nebraska","Ohio","Wisconsin"],
+        "South West" : ["Arizona","Colorado","Kansas","New Mexico","Oklahoma","North Texas","Texas","South Central Texas","Southern Colorado","Valley Area of Texas"],
     }
     
     var curr_region = [];
     var region_field = document.getElementById('id_region');
     var area_field = document.getElementById('id_area');
+    region_field.type = 'select'
     console.log(region_field)
     while (region_field.firstChild) {
         region_field.removeChild(region_field.firstChild);
