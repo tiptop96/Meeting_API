@@ -1,4 +1,5 @@
 function loadRegions() {
+    //Map of all regions with containing areas
     var map = {
         "Europe" : ["UK", "London", "Central", "Ireland", "Scotland", "Holland", "Germany", "Switserland", "Spain", "Russia", "Sweden", "Denmark", "Hong Kong", "South Africa"],
         "Pacific North" : ["Alaska","British Columbia","Idaho","Northern Alberta","Northern California","Northern Nevada","Oregon/Southwest Washington","Southern Alberta","Utah","Washington"],
@@ -9,20 +10,24 @@ function loadRegions() {
         "South West" : ["Arizona","Colorado","Kansas","New Mexico","Oklahoma","North Texas","Texas","South Central Texas","Southern Colorado","Valley Area of Texas"],
     }
     
+    //Get needed elements
     var curr_region = [];
     var region_field = document.getElementById('id_region');
     var area_field = document.getElementById('id_area');
     region_field.type = 'select'
     console.log(region_field)
+    //Reset areas
     while (region_field.firstChild) {
         region_field.removeChild(region_field.firstChild);
     }
+    //Fill areas field
     for (var key in map) {
         var el = document.createElement("option");
         el.textContent = key;
         el.value = key;
         region_field.appendChild(el)
     }
+    //Get areas for new region if a change occurs
     function getAreas() {
         curr_region = map[region_field.value];
         console.log(curr_region)
@@ -45,7 +50,7 @@ function loadRegions() {
     console.log("Run")
 }
 
-
+//Hold for 1 sec so we are sure the page is loaded
 window.onload = setTimeout(function() {
     loadRegions();
 }, 1000)

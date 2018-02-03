@@ -2,7 +2,8 @@ from django.shortcuts import render
 from api.models import Meeting
 from api.serializers import MeetingSerializer
 from rest_framework import generics
-# Create your views here.
+
+#View to handle database queries: path/?<area/region/adress/id>=<searchterm>
 class MeetingList(generics.ListAPIView):
     serializer_class = MeetingSerializer
 
@@ -23,6 +24,8 @@ class MeetingList(generics.ListAPIView):
         if id is not None:
             queryset = queryset.filter(pk=id)
         return queryset
+
+#Dormant views in case we don't want to use querystrings
 class MeetingListById(generics.ListAPIView):
     serializer_class = MeetingSerializer
     def get_queryset(self):

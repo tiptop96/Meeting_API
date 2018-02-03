@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from api.region_area_list import ALL_AREAS, ALL_REGIONS
 
+##Meeting model
 class Meeting(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, editable=False, on_delete=models.CASCADE)
 
@@ -14,6 +15,7 @@ class Meeting(models.Model):
     def __str__(self):
         return self.name
 
+#When model
 class When(models.Model):
     DAYS = (
         ("Monday", "Monday"),

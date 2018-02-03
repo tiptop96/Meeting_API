@@ -1,3 +1,5 @@
+#Map of all regions and areas used to set allowed params for database entries
+
 ALL_AREAS = (
 ("Arizona","Arizona"),
 ("Colorado","Colorado"),
