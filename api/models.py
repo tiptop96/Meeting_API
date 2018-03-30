@@ -2,14 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from api.region_area_list import ALL_AREAS, ALL_REGIONS
 
-##Meeting model
 class Meeting(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, editable=False, on_delete=models.CASCADE)
 
     name = models.CharField(max_length=96, unique=True, default='')
     description = models.CharField(max_length=196, default='')
     adress = models.CharField(max_length=96, help_text='Street, City, Country (Please activate javascript for autofill)')
-    region = models.CharField(max_length=40, choices=ALL_REGIONS, default='N/A') #choices=(('','--------------------'),), default="select"
+    region = models.CharField(max_length=40, choices=ALL_REGIONS, default='N/A')
     area = models.CharField(max_length=40, choices=ALL_AREAS, default='N/A')
 
     def __str__(self):
@@ -29,7 +28,6 @@ class When(models.Model):
     day = models.CharField(max_length=10, choices=DAYS, default='Monday')
     time = models.TimeField(default='19:00:00')
     duration = models.CharField(help_text='In minutes', max_length=3, default=60)
-    
     meeting = models.OneToOneField(Meeting, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
