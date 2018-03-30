@@ -19,4 +19,6 @@ $ pip3 install djangorestframework
 
 Add your localhost IP or host to MeetingAPI/settings.py in ALLOWED_HOSTS.
 
+`$ python manage.py runserver`
+
 💥 🔥
