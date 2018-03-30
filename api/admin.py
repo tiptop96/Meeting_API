@@ -1,5 +1,5 @@
 from django.contrib import admin
-from api.models import Meeting, When
+from api.models import Meeting, When, Region, Area
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -28,6 +28,16 @@ class AjaxedAdmin(admin.ModelAdmin):
             'js/geo-fetch.js',
         )
 
+class AreaInline(admin.TabularInline):
+    model = Area
+    
+class RegionAdmin(admin.ModelAdmin):
+    inlines = (AreaInline, )
+
+
+
+
 admin.site.register(Meeting, AjaxedAdmin)
+admin.site.register(Region, RegionAdmin)
 
 # Register your models here.

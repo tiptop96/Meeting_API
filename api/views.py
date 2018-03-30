@@ -1,7 +1,14 @@
 from django.shortcuts import render
-from api.models import Meeting
-from api.serializers import MeetingSerializer
+from api.models import Meeting, Region
+from api.serializers import MeetingSerializer, RegionSerializer
 from rest_framework import generics
+
+class RegionList(generics.ListAPIView):
+    serializer_class = RegionSerializer
+
+    def get_queryset(self):
+        queryset = Region.objects.all()
+        return queryset
 
 #View to handle database queries: path/?<area/region/adress/id>=<searchterm>
 class MeetingList(generics.ListAPIView):
