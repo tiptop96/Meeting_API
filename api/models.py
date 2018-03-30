@@ -30,5 +30,18 @@ class When(models.Model):
     duration = models.CharField(help_text='In minutes', max_length=3, default=60)
     meeting = models.OneToOneField(Meeting, on_delete=models.CASCADE, null=True)
 
+    def __str__(self):
+        return str(meeting)
+
     #class Meta:
      #   unique_together = ('meeting')
+
+class Region(models.Model):
+    region_name = models.CharField(max_length=90)
+
+    def __str__(self):
+        return self.region_name
+    
+class Area(models.Model):
+    area_name = models.CharField(max_length=120)
+    region = models.ForeignKey(Region, related_name='areas', on_delete=models.CASCADE, null=True)
