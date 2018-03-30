@@ -13,7 +13,7 @@ class AjaxedAdmin(admin.ModelAdmin):
         obj.owner = request.user
         super(AjaxedAdmin, self).save_model(request, obj, form, change)
 
-    #Security for only allowing editing of your objects
+    #Security for only allowing editing of your own objects
     def get_queryset(self, request):
         queryset = super(AjaxedAdmin, self).get_queryset(request)
         if request.user.is_superuser:
@@ -24,6 +24,7 @@ class AjaxedAdmin(admin.ModelAdmin):
     #Seeting upp JS for adress field
     class Media:
         js = (
+            'js/region-handle.js',
             'js/geo-fetch.js',
         )
 
