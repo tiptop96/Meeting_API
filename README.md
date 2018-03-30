@@ -15,6 +15,7 @@ $ virtualenv venv
 $ source venv/bin/activate
 $ pip3 install django
 $ pip3 install djangorestframework
+$ pip3 install django psycopg2
 ```
 
 Add your localhost IP or host to MeetingAPI/settings.py in ALLOWED_HOSTS.
