@@ -1,6 +1,6 @@
 function callback() {
     var adress = document.getElementById('id_adress');
-    console.log(adress)
+    //console.log(adress)
     var searchBox = new google.maps.places.SearchBox(adress);
     console.log("Autocomp. live");
 }

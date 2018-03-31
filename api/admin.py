@@ -3,6 +3,7 @@ from api.models import Meeting, When, Region, Area
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+
 class WhenInline(admin.StackedInline):
     model = When
     verbose_name_plural = 'When'

@@ -2,6 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 from api.region_area_list import ALL_AREAS, ALL_REGIONS
 
+class Region(models.Model): 
+    region_name = models.CharField(max_length=90)
+
+    def __str__(self):
+        return self.region_name
+    
+class Area(models.Model):
+    area_name = models.CharField(max_length=120)
+    region = models.ForeignKey(Region, related_name='areas', on_delete=models.CASCADE, null=True)
+
 class Meeting(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, editable=False, on_delete=models.CASCADE)
 
@@ -13,6 +23,11 @@ class Meeting(models.Model):
 
     def __str__(self):
         return self.name
+
+    def __init__(self, *args, **kwargs):
+        super(Meeting, self).__init__(*args, **kwargs)
+        self._meta.get_field('region')._choices = Region.objects.values_list()
+        self._meta.get_field('area')._choices = Area.objects.values_list()
 
 #When model
 class When(models.Model):
@@ -30,18 +45,6 @@ class When(models.Model):
     duration = models.CharField(help_text='In minutes', max_length=3, default=60)
     meeting = models.OneToOneField(Meeting, on_delete=models.CASCADE, null=True)
 
-    def __str__(self):
-        return str(meeting)
-
     #class Meta:
      #   unique_together = ('meeting')
 
-class Region(models.Model):
-    region_name = models.CharField(max_length=90)
-
-    def __str__(self):
-        return self.region_name
-    
-class Area(models.Model):
-    area_name = models.CharField(max_length=120)
-    region = models.ForeignKey(Region, related_name='areas', on_delete=models.CASCADE, null=True)
