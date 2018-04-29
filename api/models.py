@@ -17,7 +17,12 @@ class Meeting(models.Model):
 
     name = models.CharField(max_length=96, unique=True, default='')
     description = models.CharField(max_length=196, default='')
-    adress = models.CharField(max_length=96, help_text='Street, City, Country (Please activate javascript for autofill)')
+    country = models.CharField(max_length=96, null=False)
+    city = models.CharField(max_length=96, null=False)
+    street = models.CharField(max_length=96, null=False)
+    longlat = models.CharField(max_length=96, null=False)
+    formatted_address = models.CharField(max_length=196, null=False)
+    #adress = models.CharField(max_length=96, help_text='Street, City, Country (Please activate javascript for autofill)')
     region = models.CharField(max_length=40, choices=ALL_REGIONS, default='N/A')
     area = models.CharField(max_length=40, choices=ALL_AREAS, default='N/A')
 

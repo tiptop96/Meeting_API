@@ -28,6 +28,7 @@ class AjaxedAdmin(admin.ModelAdmin):
             'js/region-handle.js',
             'js/geo-fetch.js',
         )
+        css = {'all': ('css/admin.css',)}
 
 class AreaInline(admin.TabularInline):
     model = Area

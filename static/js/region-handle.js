@@ -30,6 +30,7 @@ function loadRegions() {
     }
     console.log(map)*/
     var regions_map = convertRegions(httpGet("http://localhost:8000/regions/"));
+    console.log(regions_map)
     //Get needed elements
     var curr_region = [];
     var region_field = document.getElementById('id_region');
