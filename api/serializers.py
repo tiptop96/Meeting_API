@@ -19,7 +19,7 @@ class AreaSerializer(serializers.ModelSerializer):
     #region = serializers.StringRelatedField(many=True) 
     class Meta:
         model = Area
-        fields = ("id", "area_name")
+        fields = ("area_name",)
 
 class RegionSerializer(serializers.ModelSerializer):
     areas = AreaSerializer(many=True)

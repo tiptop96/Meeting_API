@@ -3,6 +3,7 @@ from api.models import Meeting, When, Region, Area
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+
 class WhenInline(admin.StackedInline):
     model = When
     verbose_name_plural = 'When'
@@ -27,6 +28,7 @@ class AjaxedAdmin(admin.ModelAdmin):
             'js/region-handle.js',
             'js/geo-fetch.js',
         )
+        css = {'all': ('css/admin.css',)}
 
 class AreaInline(admin.TabularInline):
     model = Area

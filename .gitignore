@@ -1,5 +1,5 @@
 *.sqlite3
-*.pyc
+**.pyc
 venv/
 api/migrations/
-
+.bash_profile
