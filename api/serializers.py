@@ -12,7 +12,7 @@ class MeetingSerializer(serializers.ModelSerializer):
     when = WhenSerializer(many=False)
     class Meta:
         model = Meeting
-        fields = ('name', 'description', 'adress', 'when' ,"pk", "region", "area") #'country', 'city',
+        fields = ('name', 'description', 'country', 'city', 'street', 'formatted_address', 'longlat', 'when' ,"pk", "region", "area") #'country', 'city',
 
 
 class AreaSerializer(serializers.ModelSerializer):
